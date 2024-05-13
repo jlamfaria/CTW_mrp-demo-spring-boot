@@ -26,13 +26,25 @@ jobs:
         with:
           sarif_file: snyk.sarif
 
+
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Run Snyk to scan vulnerabilities
+        run: snyk test --json > snyk-report.json
+
+      - name: Convert Snyk JSON report to SARIF
+        run: snyk-to-sarif < snyk-report.json > snyk.sarif
+
       - name: Print the Snyk SARIF file
         run: |
           cat snyk.sarif
           # Extracting the number of vulnerabilities and setting it as an output
           num_vulnerabilities=$(jq -r '.runs[0].results | length' snyk.sarif)
-          echo "::set-output name=num_vulnerabilities::$num_vulnerabilities" 
+          echo "::set-output name=num_vulnerabilities::$num_vulnerabilities"
 
       - name: Output number of vulnerabilities
-        run: "Number of vulnerabilities: ${{ steps.print_snyk.outputs.num_vulnerabilities }}"
+        run: |
+          echo "Number of vulnerabilities: ${{ steps.print_snyk.outputs.num_vulnerabilities }}"
 
