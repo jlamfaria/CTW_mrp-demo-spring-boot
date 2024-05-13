@@ -31,12 +31,6 @@ jobs:
       - name: Install Snyk CLI
         run: npm install -g snyk || npm update -g snyk
 
-      - name: Run Snyk to scan vulnerabilities
-        run: snyk test --json > snyk-report.json
-
-      - name: Convert Snyk JSON report to SARIF
-        run: snyk-to-sarif < snyk-report.json > snyk.sarif
-
       - name: Print the Snyk SARIF file
         run: |
           cat snyk.sarif
