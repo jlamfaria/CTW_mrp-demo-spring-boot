@@ -5,7 +5,7 @@ name: Example workflow for Maven using Snyk
 on: push
 jobs:
   security:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
