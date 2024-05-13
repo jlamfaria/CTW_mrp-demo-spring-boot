@@ -29,7 +29,7 @@ jobs:
 
 
       - name: Install Snyk CLI
-        run: npm install -g snyk
+        run: npm install -g snyk || npm update -g snyk
 
       - name: Run Snyk to scan vulnerabilities
         run: snyk test --json > snyk-report.json
