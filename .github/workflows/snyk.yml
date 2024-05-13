@@ -2,7 +2,7 @@ name: Example workflow for Maven using Snyk
 
 #description: 'Snyk test demo for Maven 3.9.3/JAVA 17,linked to US - https://atc.bmwgroup.net/jira/browse/CAWE-790'
 
-#on: push
+on: push
 jobs:
   security:
     runs-on: ubuntu-latest
@@ -15,6 +15,12 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --sarif-file-output=snyk.sarif
+
+        # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
+        # Use || true to not fail the pipeline
+      - name: Snyk Code test
+        run: snyk code test --sarif > snyk-code.sarif || true
+
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
