@@ -1,0 +1,14 @@
+<server description="Intro REST Guide Liberty server">
+
+  <featureManager>
+      <feature>jaxrs-2.1</feature>
+      <feature>jsonp-1.1</feature>
+  </featureManager>
+
+  <httpEndpoint id="defaultHttpEndpoint"
+                host="*"
+                httpPort="${default.http.port}"
+                httpsPort="${default.https.port}"/>
+
+  <application context-root="${app.context.root}" location="${app.location}" type="war"/>
+</server>
