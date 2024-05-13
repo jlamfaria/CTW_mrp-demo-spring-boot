@@ -27,4 +27,12 @@ jobs:
           sarif_file: snyk.sarif
 
       - name: Print the Snyk SARIF file
-        run: cat snyk.sarif
+        run: |
+          cat snyk.sarif
+          # Extracting the number of vulnerabilities and setting it as an output
+          num_vulnerabilities=$(jq -r '.runs[0].results | length' snyk.sarif)
+          echo "::set-output name=num_vulnerabilities::$num_vulnerabilities" 
+
+      - name: Output number of vulnerabilities
+        run: "Number of vulnerabilities: ${{ steps.print_snyk.outputs.num_vulnerabilities }}"
+
