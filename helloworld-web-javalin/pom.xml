@@ -13,7 +13,7 @@
     <name>HelloWorld Javalin</name>
 
     <properties>
-        <javalin.version>3.4.1</javalin.version>
+        <javalin.version>3.13.13</javalin.version>
         <jackson.databind.version>2.13.4.2</jackson.databind.version>
         <mainClass>acme.hello.Application</mainClass>
     </properties>
