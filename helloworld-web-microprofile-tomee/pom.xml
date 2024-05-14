@@ -14,7 +14,7 @@
     <name>HelloWorld MicroProfile (TomEE)</name>
 
     <properties>
-        <tomee.vesion>8.0</tomee.vesion>
+        <tomee.vesion>8.0-6</tomee.vesion>
         <tomee.plugin.version>7.1.0</tomee.plugin.version>
         <jackson.databind.version>2.13.4.2</jackson.databind.version>
     </properties>
