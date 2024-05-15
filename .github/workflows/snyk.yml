@@ -32,7 +32,7 @@ jobs:
           jq '
           .runs[].tool.driver.rules |= map(
             if .properties["security-severity"] == null or .properties["security-severity"] == "undefined" then
-              .properties["security-severity"] = 5.0
+              .properties["security-severity"] = '5.0'
             else
               .
             end
