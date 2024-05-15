@@ -26,12 +26,20 @@ jobs:
 
       - name: Validate and fix SARIF file
         run: |
-          jq '.runs[].tool.driver.rules |= map(if .properties["security-severity"] == null then .properties["security-severity"] = 5.0 else . end)' snyk.sarif > fixed-snyk.sarif
+          cat snyk.sarif | jq '
+          .runs[].tool.driver.rules |= map(
+            if .properties["security-severity"] == null or .properties["security-severity"] == "undefined" then
+              .properties["security-severity"] = 5.0
+            else
+              .
+            end
+          )' > fixed-snyk.sarif
 
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: fixed-snyk.sarif
+
 
 
       #      - name: Print the Snyk SARIF file
