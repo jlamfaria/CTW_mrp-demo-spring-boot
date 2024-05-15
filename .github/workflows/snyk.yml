@@ -21,7 +21,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --all-projects --sarif-file-output=snyk.sarif
+          args: --sarif-file-output=snyk.sarif
           command: code test && snyk-recursive
 
       - name: Upload result to GitHub Code Scanning
