@@ -29,9 +29,9 @@ jobs:
         with:
           sarif_file: snyk.sarif
 
-      - name: Print the Snyk SARIF file
-        run: |
-          cat snyk.sarif
+#      - name: Print the Snyk SARIF file
+#        run: |
+#          cat snyk.sarif
 
 # --------------------------------------------------------------------
 
