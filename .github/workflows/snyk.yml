@@ -21,7 +21,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --all-projects --sarif-file-output=snyk.sarif
+          args: --all-projects --sarif-file-output=snyk.sarif --command=monitor
       #         command: code test && snyk-recursive
 
       - name: Output original SARIF file
