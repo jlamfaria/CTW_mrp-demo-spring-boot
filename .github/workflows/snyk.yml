@@ -1,5 +1,5 @@
 name: Example workflow for Maven using Snyk
-#description: 'Snyk test demo for Maven 3.9.3/JAVA 17, linked to US - https://atc.bmwgroup.net/jira/browse/CAWE-790'
+description: 'Snyk test demo for Maven 3.9.3/JAVA 17, linked to US - https://atc.bmwgroup.net/jira/browse/CAWE-790'
 
 on: push
 jobs:
@@ -22,7 +22,6 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --all-projects --sarif-file-output=snyk.sarif --command=monitor
-      #         command: code test && snyk-recursive
 
       - name: Output original SARIF file
         run: cat snyk.sarif
