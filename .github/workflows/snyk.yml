@@ -1,5 +1,5 @@
 name: Example workflow for Maven using Snyk
-description: 'Snyk test demo for Maven 3.9.3/JAVA 17, linked to US - https://atc.bmwgroup.net/jira/browse/CAWE-790'
+#description: 'Snyk test demo for Maven 3.9.3/JAVA 17, linked to US - https://atc.bmwgroup.net/jira/browse/CAWE-790'
 
 on: push
 jobs:
@@ -49,7 +49,7 @@ jobs:
 
 
 
-      #      - name: Print the Snyk SARIF file
+#      - name: Print the Snyk SARIF file
 #        run: |
 #          cat snyk.sarif
 
