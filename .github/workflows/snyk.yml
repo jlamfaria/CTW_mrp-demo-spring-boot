@@ -32,9 +32,9 @@ jobs:
           jq '
           .runs[].tool.driver.rules |= map(
             if .properties["security-severity"] == null or .properties["security-severity"] == "undefined" then
-              .properties["security-severity"] = '5.0'
+              .properties["security-severity"] = "5.0"
             else
-              .
+              .properties["security-severity"] |= tostring
             end
           )' snyk.sarif > fixed-snyk.sarif
 
@@ -45,6 +45,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: fixed-snyk.sarif
+
 
 
 
