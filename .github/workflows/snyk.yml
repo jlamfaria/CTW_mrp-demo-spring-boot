@@ -41,7 +41,9 @@ jobs:
         run: cat fixed-snyk.sarif
 
       - name: Convert Sarif file to HTML
-        run: snk sarif-to-html -i fixed-snyk.sarif -o snyk-report.html
+        # run: snk sarif-to-html -i fixed-snyk.sarif -o snyk-report.html
+        run: snyk test --json | snyk-to-html -o results-opensource.html
+
 
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
