@@ -1,7 +1,7 @@
 name: Example workflow for Maven using Snyk
 #description: 'Snyk test demo for Maven 3.9.3/JAVA 17, linked to US - https://atc.bmwgroup.net/jira/browse/CAWE-790'
 
-
+45ed xswqs3a1\
 on: push
 jobs:
   security:
@@ -40,6 +40,9 @@ jobs:
 
       - name: Output fixed SARIF file
         run: cat fixed-snyk.sarif
+
+      - name: Convert Sarif file to HTML
+        run: snk sarif-to-html -i fixed-snyk.sarif -o snyk-report.html
 
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
