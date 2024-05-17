@@ -1,0 +1,23 @@
+@startuml
+!define RECTANGLE entity
+!define BOUNDARY package
+
+BOUNDARY "Internet Perimeter" {
+RECTANGLE "Snyk Report Generator" as SnykUI
+RECTANGLE "Snyk Code Engine" as SnykEngine
+}
+
+BOUNDARY "BMW Perimeter" {
+    RECTANGLE "Git Repo BMW" as Git
+    RECTANGLE "Github Actions" as GithubActions
+    RECTANGLE "Code Scanning Tab" as CodeScanning
+
+}
+
+SnykUI --> SnykEngine : Return Results
+SnykEngine --> SnykUI : Analysis Results
+SnykEngine --> Git : Receive Snyk report / Send code
+Git --> CodeScanning : Receive Snyk report
+GithubActions --> Git : Trigger report generation
+Git --> SnykEngine
+@enduml
